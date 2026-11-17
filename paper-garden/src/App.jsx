@@ -5,7 +5,7 @@ import {
   BookOpen, Brain, CalendarDays, Check, ChevronDown, ChevronLeft, ChevronRight,
   Download, ExternalLink, FileText, FileUp, Filter, Flower2, Layers3, Leaf, Link2,
   Menu, MoreHorizontal, Network, Plus, Search, Settings2, SlidersHorizontal, Sparkles,
-  Tag, Trash2, Upload, X, Heart, ArrowUpRight, Clock3, Edit3,
+  Tag, Trash2, Upload, X, Heart, ArrowUpRight, Clock3, Edit3, Sun, Moon,
 } from 'lucide-react'
 import { db, uid, createPaper, deletePaper, exportBackup, importBackup, now, parseTags, plainText, QUESTIONS, savePaperInfo, seedExampleLibrary } from './lib/db.js'
 import { Flower, Sprig } from './components/Decor.jsx'
@@ -58,9 +58,16 @@ function Sidebar({ onAdd }) {
     </nav>
   </>
 }
-function PageShell({ children, onAdd }) {
+function PageShell({ children, onAdd, theme, onToggleTheme }) {
   return <div className="app-shell"><Sidebar onAdd={onAdd}/><div className="main-column">
     <header className="topbar"><span className="mobile-brand"><Flower size={27} color="#d6a9ad"/> paper garden</span><div className="topbar-spacer"/>
+      <button type="button" className="theme-toggle" onClick={onToggleTheme}
+        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        aria-pressed={theme === 'dark'}
+        title={theme === 'dark' ? 'Light mode' : 'Dark mode'}>
+        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        <span className="theme-toggle-label">{theme === 'dark' ? 'Light' : 'Dark'}</span>
+      </button>
       <span className="topbar-pill"><span className="online-dot"/> Slow learning is still learning</span>
       <span className="topbar-avatar"><Flower2 size={19}/></span>
     </header>
@@ -72,7 +79,7 @@ function StatChip({ value, label, icon:Icon, color }) {
 }
 function PaperCard({ paper }) {
   const firstTag = paper.tags?.[0]
-  const palettes=['#ecdfd3','#dde5d4','#e9e1ed','#e8e8d1','#e7ded9']
+  const palettes=['var(--cover-1)','var(--cover-2)','var(--cover-3)','var(--cover-4)','var(--cover-5)']
   const tint=palettes[(paper.title?.length || 0)%palettes.length]
   return <Link to={`/paper/${paper.id}`} className="paper-card group">
     <div className="paper-card-cover" style={{background:tint}}>
@@ -241,11 +248,17 @@ function ReviewPage(){
   </div>
 }
 export default function App(){
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light')
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#1d2521' : '#f8f7f2')
+    try { window.localStorage.setItem('paper-garden-theme', theme) } catch { /* Storage can be disabled */ }
+  }, [theme])
   const [addOpen,setAddOpen] = useState(false)
   const navigate=useNavigate()
   const [bootError,setBootError]=useState('')
   useEffect(()=>{if(!initialization) initialization=seedExampleLibrary();initialization.catch(e=>setBootError(e.message))},[])
-  return <PageShell onAdd={()=>setAddOpen(true)}>
+  return <PageShell onAdd={()=>setAddOpen(true)} theme={theme} onToggleTheme={()=>setTheme(t=>t==='dark'?'light':'dark')}>
     {bootError&&<div className="notice mb-5">Local database could not be opened: {bootError}</div>}
     <Routes><Route path="/" element={<LibraryPage onAdd={()=>setAddOpen(true)}/>}/><Route path="/paper/:id" element={<PaperPage/>}/><Route path="/garden" element={<GardenPage/>}/><Route path="/review" element={<ReviewPage/>}/><Route path="*" element={<Navigate to="/" replace/>}/></Routes>
     <AddPaperModal open={addOpen} onClose={()=>setAddOpen(false)} onAdded={paper=>navigate(`/paper/${paper.id}`)}/>

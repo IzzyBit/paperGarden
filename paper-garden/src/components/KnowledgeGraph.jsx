@@ -27,12 +27,12 @@ export default function KnowledgeGraph({ focusPaperId = null, compact = false })
     if (!storedNodes) return
     setNodes(storedNodes.filter(n => !visibleIds || visibleIds.has(n.id)).map(n => ({
       id: n.id, position: { x:n.x, y:n.y }, data: { label:n.label, kind:n.kind, paperId:n.paperId },
-      style: { background:n.kind==='paper'?'#fefcf6':'#eaf0e5', border:`1.5px solid ${n.kind==='paper'?'#e9ceb9':'#bdcfb6'}`, borderRadius:17, padding:'15px 18px', fontFamily:'inherit', fontSize:13, fontWeight:650, color:'#4f5a4f', boxShadow:'0 7px 20px #4a56410c', minWidth:132, maxWidth:215, whiteSpace:'normal' },
+      style: { background:n.kind==='paper'?'var(--node-paper-bg)':'var(--node-concept-bg)', border:`1.5px solid ${n.kind==='paper'?'var(--node-paper-border)':'var(--node-concept-border)'}`, borderRadius:17, padding:'15px 18px', fontFamily:'inherit', fontSize:13, fontWeight:650, color:'var(--node-ink)', boxShadow:'0 7px 20px var(--node-shadow)', minWidth:132, maxWidth:215, whiteSpace:'normal' },
     })))
   },[storedNodes,visibleIds,setNodes])
 
   const edges = useMemo(() => (storedEdges || []).filter(e => !visibleIds || (visibleIds.has(e.source)&&visibleIds.has(e.target))).map(e=>({
-    ...e, type:'smoothstep', animated:false, style:{stroke:'#a6baa8',strokeWidth:1.8}, markerEnd:{type:MarkerType.ArrowClosed, color:'#9eaf9e',width:12,height:12},
+    ...e, type:'smoothstep', animated:false, style:{stroke:'var(--graph-edge)',strokeWidth:1.8}, markerEnd:{type:MarkerType.ArrowClosed, color:'var(--graph-edge)',width:12,height:12},
   })), [storedEdges,visibleIds])
 
   const onConnect = useCallback(async params => {
@@ -79,9 +79,9 @@ export default function KnowledgeGraph({ focusPaperId = null, compact = false })
         onNodeClick={(_,node)=>setSelected({id:node.id,kind:node.data.kind,paperId:node.data.paperId})}
         onPaneClick={()=>setSelected(null)} fitView fitViewOptions={{padding:.25}} minZoom={.2} maxZoom={1.8}
         proOptions={{hideAttribution:true}}>
-        <Background variant="dots" gap={22} size={1.3} color="#dde4d7"/>
+        <Background variant="dots" gap={22} size={1.3} color="var(--graph-dots)"/>
         <Controls position="bottom-left" showInteractive={false}/>
-        {!compact && <MiniMap pannable zoomable position="bottom-right" nodeStrokeWidth={3} style={{background:'#faf9f4',border:'1px solid #e6e6da',borderRadius:13}}/>}
+        {!compact && <MiniMap pannable zoomable position="bottom-right" nodeStrokeWidth={3} style={{background:'var(--graph-mini)',border:'1px solid var(--border)',borderRadius:13}}/>}
       </ReactFlow>
       <div className="graph-legend"><span className="dot bg-peach"/> Papers <span className="dot bg-sage-light ml-3"/> Concepts</div>
     </div>
