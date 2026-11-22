@@ -179,6 +179,112 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width:540px){.cards-grid{display:flex;flex-direction:column;gap:9px;}.paper-card{display:flex;flex-direction:row;min-height:126px;border-radius:14px;}.paper-card-cover{width:92px;flex:0 0 92px;min-height:126px;height:auto;}.cover-file{left:8px;top:10px;font-size:0;}.cover-flower{left:15px;top:49px;}.paper-card-cover .status-pill{display:none;}.paper-card-body{padding:13px;}.paper-card-title{min-height:0;margin-top:5px;font-size:15px;}.card-description{display:none;}.card-foot{padding-top:11px;}.paper-meta{font-size:9px;}.hero-banner{min-height:240px;}.hero-copy h1{font-size:33px;}.hero-copy p{font-size:12px;}.stat-chip small{line-height:1.3;}.topbar-avatar{display:none;}.topbar-pill{font-size:9px;}.tab-item{padding:11px 12px;}.tab-item svg{display:none;}.filters-row .view-toggle{display:none;}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important;}}
 
+/* ── Paper Garden themes ─────────────────────────────────────────────────────
+ * Theme colors are CSS custom properties, so paper cards and React Flow nodes
+ * automatically update without rerendering. Light mode retains the original.
+ * ────────────────────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --border: #e8e9e1;
+  --node-paper-bg: #fefcf6;
+  --node-concept-bg: #eaf0e5;
+  --node-paper-border: #e9ceb9;
+  --node-concept-border: #bdcfb6;
+  --node-ink: #4f5a4f;
+  --node-shadow: #4a56410c;
+  --graph-edge: #a6baa8;
+  --graph-dots: #dde4d7;
+  --graph-mini: #faf9f4;
+  --cover-1: #ecdfd3;
+  --cover-2: #dde5d4;
+  --cover-3: #e9e1ed;
+  --cover-4: #e8e8d1;
+  --cover-5: #e7ded9;
+}
+.theme-toggle {
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:8px 12px;border-radius:999px;background:#f1f3ec;
+  border:1px solid #e2e8dc;color:#5f7c63;font-size:11px;font-weight:800;
+  transition:background .2s,color .2s;
+  margin-right:12px;white-space:nowrap;
+}
+.theme-toggle:hover {background:#e6ede2;}
+.theme-toggle-label {line-height:1;}
+@media(max-width:540px){.theme-toggle-label{display:none}.theme-toggle{padding:9px;margin-right:8px}}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  color:#e4ebe0;
+  background:#1d2521;
+  --border:#405046;
+  --node-paper-bg:#3b3533;
+  --node-concept-bg:#30463a;
+  --node-paper-border:#806d61;
+  --node-concept-border:#668b73;
+  --node-ink:#f0f0e8;
+  --node-shadow:#030b081f;
+  --graph-edge:#a3bbaa;
+  --graph-dots:#4b6152;
+  --graph-mini:#29342c;
+  --cover-1:#59433c;
+  --cover-2:#3e594d;
+  --cover-3:#51465c;
+  --cover-4:#54513a;
+  --cover-5:#57484b;
+}
+[data-theme="dark"] body{background:#1d2521;color:#e4ebe0}
+[data-theme="dark"] ::selection{background:#607d65;color:#fff}
+[data-theme="dark"] button:focus-visible,
+[data-theme="dark"] a:focus-visible,
+[data-theme="dark"] input:focus-visible,
+[data-theme="dark"] textarea:focus-visible,
+[data-theme="dark"] select:focus-visible {outline-color:#96bb9e}
+
+/* Surfaces and navigation */
+[data-theme="dark"] .sidebar,
+[data-theme="dark"] .topbar,
+[data-theme="dark"] .mobile-bottom-nav {background:#222e27;border-color:#3c4a3f}
+[data-theme="dark"] .main-column {background:#1d2521}
+[data-theme="dark"] .brand,
+[data-theme="dark"] .brand strong,
+[data-theme="dark"] .mobile-brand {color:#e0eddf}
+[data-theme="dark"] .brand small,
+[data-theme="dark"] .nav-heading {color:#a2b49f}
+[data-theme="dark"] .nav-item,
+[data-theme="dark"] .mobile-nav-link,
+[data-theme="dark"] .backup-action {color:#b4c7b5}
+[data-theme="dark"] .nav-item:hover,
+[data-theme="dark"] .backup-action:hover {background:#344338;color:#eff5e9}
+[data-theme="dark"] .nav-active,
+[data-theme="dark"] .mobile-nav-link.active {background:#3c5341!important;color:#d0e8d0}
+[data-theme="dark"] .soft-reminder {background:#382f30}
+[data-theme="dark"] .soft-reminder p {color:#d0c4c2}
+[data-theme="dark"] .topbar-pill {background:#2d3b31;color:#bdd0bd;border-color:#46574a}
+[data-theme="dark"] .topbar-avatar {background:#4b3b43;color:#e3bbc9;border-color:#674e57}
+[data-theme="dark"] .theme-toggle {background:#354839;color:#dcebd7;border-color:#536956}
+[data-theme="dark"] .theme-toggle:hover {background:#48604d}
+[data-theme="dark"] .online-dot {background:#97cba8}
+[data-theme="dark"] .notice {background:#344a3b;color:#d0e6cc}
+[data-theme="dark"] .muted {color:#acbead}
+[data-theme="dark"] .text-ink {color:#e3ecdf}
+[data-theme="dark"] .text-sage {color:#b5d0b3}
+[data-theme="dark"] .text-rose {color:#e0a9b2}
+[data-theme="dark"] .bg-mint {background:#3c5343}
+[data-theme="dark"] .bg-peach {background:#bd9b91}
+[data-theme="dark"] .bg-sage-light {background:#8aaf8a}
+[data-theme="dark"] .eyebrow {color:#abc4a8}
+
+/* Headers, hero, stats */
+[data-theme="dark"] .hero-banner {background:linear-gradient(112deg,#393531 0%,#343a33 55%,#3c4236 100%);border-color:#565447;box-shadow:0 8px 32px #090f0a17}
+[data-theme="dark"] .hero-copy h1,
+[data-theme="dark"] .section-heading h2,
+[data-theme="dark"] .paper-header h1 {color:#e4ece0}
+[data-theme="dark"] .hero-copy h1 em {color:#e6adb9}
+[data-theme="dark"] .hero-copy p {color:#c0cbbb}
+[data-theme="dark"] .hero-blob {background:#526c54}
+[data-theme="dark"] .hero-paper {background:#eee0ce}
+[data-theme="dark"] .hero-paper div {background:#c1baa9}
+[data-theme="dark"] .stat-chip,
 [data-theme="dark"] .paper-card,
 [data-theme="dark"] .paper-list-row,
 [data-theme="dark"] .paper-surface,
@@ -287,3 +393,298 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 [data-theme="dark"] .text-red-600,
 [data-theme="dark"] .text-red-700 {color:#f0acb3}
 [data-theme="dark"] .text-ink {color:#e2ede0}
+
+
+/* Readability improvements: consistent foregrounds on all dark surfaces.
+   Specificity is deliberately higher than the base light-theme selectors. */
+html[data-theme="dark"] {
+  --page-background: #1d2521;
+  --panel-background: #29372e;
+  --heading-color: #ecf3e8;
+  --body-color: #dce8d9;
+  --secondary-color: #b8cbb6;
+}
+html[data-theme="dark"] .app-shell,
+html[data-theme="dark"] .main-column,
+html[data-theme="dark"] .main-content {
+  background:var(--page-background);
+  color:var(--body-color);
+}
+html[data-theme="dark"] .paper-header,
+html[data-theme="dark"] .paper-surface {
+  color:var(--body-color);
+}
+html[data-theme="dark"] .paper-header h1,
+html[data-theme="dark"] .paper-surface h1,
+html[data-theme="dark"] .paper-surface h2,
+html[data-theme="dark"] .paper-surface h3,
+html[data-theme="dark"] .font-display {
+  color:var(--heading-color);
+}
+html[data-theme="dark"] .notes-sidepaper,
+html[data-theme="dark"] .notes-sidepaper p,
+html[data-theme="dark"] .notes-sidepaper li,
+html[data-theme="dark"] .paper-header p,
+html[data-theme="dark"] .paper-header .paper-meta,
+html[data-theme="dark"] .paper-header .muted,
+html[data-theme="dark"] .paper-surface .muted {
+  color:var(--secondary-color);
+}
+html[data-theme="dark"] .paper-header .tag-chip { color:#d4e7d1; }
+html[data-theme="dark"] .editor-toolbar,
+html[data-theme="dark"] .notes-footer { background:var(--panel-background); }
+html[data-theme="dark"] .prose-editor :is(p,li,strong,em) {color:inherit;}
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+  color-scheme:dark;
+}
+html[data-theme="dark"] .editor-tool:focus-visible,
+html[data-theme="dark"] .theme-toggle:focus-visible,
+html[data-theme="dark"] .btn-primary:focus-visible {
+  outline:2px solid #b4ddbd;
+  outline-offset:3px;
+}
+@media (max-width: 760px) {
+  html[data-theme="dark"] .mobile-bottom-nav { background:#222e27; }
+}
+
+/* =====================================================================
+   Paper Garden · Bloom palette (2026)
+   Light: peach, lilac, mint and rose on clean ivory-lavender surfaces.
+   Dark: midnight indigo with orchid, sea-glass and blush accents.
+   Keep theme-specific overrides AFTER the original rules above.
+   ===================================================================== */
+:root {
+  --bloom-canvas: #faf8ff;
+  --bloom-sidebar: #fffaff;
+  --bloom-topbar: #fffaff;
+  --bloom-panel: #ffffff;
+  --bloom-input: #fdfbff;
+  --bloom-soft: #f4efff;
+  --bloom-border: #e9e1f4;
+  --bloom-ink: #424368;
+  --bloom-muted: #6e7494;
+  --bloom-heading: #34385d;
+  --bloom-primary: #7060bb;
+  --bloom-primary-hover: #5d4da6;
+  --bloom-primary-ink: #ffffff;
+  --bloom-lavender: #8d77d4;
+  --bloom-rose: #cb6791;
+  --bloom-mint: #459786;
+  --bloom-peach: #d38b65;
+  --bloom-shadow: #7770aa13;
+  color-scheme: light;
+  color: var(--bloom-ink);
+  background: var(--bloom-canvas);
+  --border: var(--bloom-border);
+  --node-paper-bg: #fff2f4;
+  --node-concept-bg: #e5f7ed;
+  --node-paper-border: #ecb8c9;
+  --node-concept-border: #a2dbc5;
+  --node-ink: #414768;
+  --node-shadow: #5550a51c;
+  --graph-edge: #b39cd6;
+  --graph-dots: #dcd3f1;
+  --graph-mini: #f9f5ff;
+  --cover-1: #f3b9c4;
+  --cover-2: #abdec9;
+  --cover-3: #c6b6ed;
+  --cover-4: #f5d19b;
+  --cover-5: #c9d9fa;
+}
+html[data-theme="dark"] {
+  --bloom-canvas: #191a2e;
+  --bloom-sidebar: #22223b;
+  --bloom-topbar: #23233e;
+  --bloom-panel: #292a46;
+  --bloom-input: #24253e;
+  --bloom-soft: #333352;
+  --bloom-border: #42405f;
+  --bloom-ink: #e4e2f5;
+  --bloom-muted: #b9b6d2;
+  --bloom-heading: #f6f1ff;
+  --bloom-primary: #b7a5ff;
+  --bloom-primary-hover: #ccbeff;
+  --bloom-primary-ink: #292347;
+  --bloom-lavender: #c9b6ff;
+  --bloom-rose: #ffb1cf;
+  --bloom-mint: #92dfc9;
+  --bloom-peach: #ffd3a8;
+  --bloom-shadow: #09091d54;
+  color-scheme: dark;
+  color: var(--bloom-ink);
+  background: var(--bloom-canvas);
+  --border: var(--bloom-border);
+  --node-paper-bg: #4d344e;
+  --node-concept-bg: #244b4d;
+  --node-paper-border: #bc7baf;
+  --node-concept-border: #6cbbaf;
+  --node-ink: #f7f0ff;
+  --node-shadow: #0b092f70;
+  --graph-edge: #b5a4e4;
+  --graph-dots: #514b74;
+  --graph-mini: #22213a;
+  --cover-1: #96567d;
+  --cover-2: #3c8a7d;
+  --cover-3: #7761b8;
+  --cover-4: #9b7958;
+  --cover-5: #567eaf;
+}
+
+/* Common surface and typography treatment, deliberately shared by both themes */
+html[data-theme] body,
+html[data-theme] .app-shell,
+html[data-theme] .main-column,
+html[data-theme] .main-content {background:var(--bloom-canvas);color:var(--bloom-ink)}
+html[data-theme] .sidebar,
+html[data-theme] .mobile-bottom-nav {background:var(--bloom-sidebar);border-color:var(--bloom-border)}
+html[data-theme] .topbar {background:var(--bloom-topbar);border-color:var(--bloom-border)}
+html[data-theme] .brand,html[data-theme] .brand strong,
+html[data-theme] .mobile-brand,html[data-theme] .section-heading h2,
+html[data-theme] .font-display,
+html[data-theme] .paper-header h1 {color:var(--bloom-heading)}
+html[data-theme] .brand small,html[data-theme] .nav-heading {color:var(--bloom-muted)}
+html[data-theme] .muted,html[data-theme] .paper-header .muted,
+html[data-theme] .paper-surface .muted {color:var(--bloom-muted)}
+html[data-theme] .text-ink,html[data-theme] .text-sage {color:var(--bloom-ink)}
+html[data-theme] .text-rose {color:var(--bloom-rose)}
+html[data-theme] .eyebrow,html[data-theme] .back-link {color:var(--bloom-lavender)}
+html[data-theme] .back-link:hover {color:var(--bloom-primary)}
+html[data-theme] .nav-item,html[data-theme] .mobile-nav-link,
+html[data-theme] .backup-action {color:var(--bloom-muted)}
+html[data-theme] .nav-item:hover,html[data-theme] .backup-action:hover {background:var(--bloom-soft);color:var(--bloom-primary)}
+html[data-theme] .nav-active,html[data-theme] .mobile-nav-link.active {background:var(--bloom-soft)!important;color:var(--bloom-primary)}
+html[data-theme] .topbar-pill,
+html[data-theme] .theme-toggle {background:var(--bloom-soft);border-color:var(--bloom-border);color:var(--bloom-primary)}
+html[data-theme] .theme-toggle:hover {border-color:var(--bloom-lavender);background:var(--bloom-panel)}
+html[data-theme] .topbar-avatar {background:var(--bloom-soft);border-color:var(--bloom-border);color:var(--bloom-rose)}
+html[data-theme] .online-dot {background:var(--bloom-mint)}
+html[data-theme] .soft-reminder {background:var(--bloom-soft)}
+html[data-theme] .soft-reminder p {color:var(--bloom-muted)}
+html[data-theme] .notice {background:var(--bloom-soft);color:var(--bloom-ink)}
+html[data-theme] .btn-primary {background:var(--bloom-primary);color:var(--bloom-primary-ink);box-shadow:0 6px 18px var(--bloom-shadow)}
+html[data-theme] .btn-primary:hover {background:var(--bloom-primary-hover);box-shadow:0 10px 24px var(--bloom-shadow)}
+html[data-theme] .btn-secondary {background:var(--bloom-panel);color:var(--bloom-ink);border-color:var(--bloom-border)}
+html[data-theme] .btn-secondary:hover {background:var(--bloom-soft)}
+html[data-theme] .btn-soft {background:var(--bloom-soft);color:var(--bloom-primary)}
+html[data-theme] .btn-soft:hover {background:var(--bloom-border)}
+html[data-theme] .btn-soft.green {background:var(--bloom-soft);color:var(--bloom-mint)}
+html[data-theme] .btn-danger {background:#bd587c;color:#fff}
+html[data-theme] .btn-danger:hover {background:#a9456a}
+html[data-theme] .stat-chip,
+html[data-theme] .paper-card,
+html[data-theme] .paper-list-row,
+html[data-theme] .paper-surface,
+html[data-theme] .modal-window,
+html[data-theme] .review-row {background:var(--bloom-panel);border-color:var(--bloom-border);box-shadow:0 6px 25px var(--bloom-shadow);color:var(--bloom-ink)}
+html[data-theme] .paper-card:hover {border-color:var(--bloom-lavender);box-shadow:0 12px 30px var(--bloom-shadow)}
+html[data-theme] .stat-chip strong,
+html[data-theme] .paper-card-title,
+html[data-theme] .paper-list-row,
+html[data-theme] .review-row {color:var(--bloom-heading)}
+html[data-theme] .stat-chip small,html[data-theme] .paper-meta,
+html[data-theme] .card-description {color:var(--bloom-muted)}
+html[data-theme] .paper-meta span {color:var(--bloom-muted)}
+html[data-theme] .stat-icon.sand {background:color-mix(in srgb,var(--bloom-peach) 19%,transparent);color:var(--bloom-peach)}
+html[data-theme] .stat-icon.sage {background:color-mix(in srgb,var(--bloom-mint) 19%,transparent);color:var(--bloom-mint)}
+html[data-theme] .stat-icon.lavender {background:color-mix(in srgb,var(--bloom-lavender) 19%,transparent);color:var(--bloom-lavender)}
+html[data-theme] .tag-chip {background:var(--bloom-soft);color:var(--bloom-primary)}
+html[data-theme] .card-arrow,html[data-theme] .cover-file {color:var(--bloom-primary)}
+html[data-theme] .list-icon {background:var(--bloom-soft);color:var(--bloom-rose)}
+html[data-theme] .status-pill.unread {background:color-mix(in srgb,var(--bloom-peach) 24%,var(--bloom-panel));color:var(--bloom-ink)}
+html[data-theme] .status-pill.reading {background:color-mix(in srgb,var(--bloom-lavender) 24%,var(--bloom-panel));color:var(--bloom-ink)}
+html[data-theme] .status-pill.explored {background:color-mix(in srgb,var(--bloom-mint) 24%,var(--bloom-panel));color:var(--bloom-ink)}
+html[data-theme] .search-wrap,
+html[data-theme] .select-wrap,
+html[data-theme] .view-toggle,
+html[data-theme] .field,
+html[data-theme] .recall-input,
+html[data-theme] .upload-field {background:var(--bloom-input);border-color:var(--bloom-border);color:var(--bloom-ink)}
+html[data-theme] .search-wrap input,
+html[data-theme] .select-wrap select,
+html[data-theme] .field,
+html[data-theme] .recall-input {color:var(--bloom-ink)}
+html[data-theme] .search-wrap input::placeholder,
+html[data-theme] .field::placeholder,
+html[data-theme] .recall-input::placeholder {color:var(--bloom-muted)}
+html[data-theme] .select-wrap select option {background:var(--bloom-panel);color:var(--bloom-ink)}
+html[data-theme] .field:focus,
+html[data-theme] .recall-input:focus {background:var(--bloom-panel);border-color:var(--bloom-lavender);box-shadow:0 0 0 3px color-mix(in srgb,var(--bloom-lavender) 22%,transparent)}
+html[data-theme] .field-label,html[data-theme] .saved-indicator {color:var(--bloom-ink)}
+html[data-theme] .field-help {color:var(--bloom-muted)}
+html[data-theme] .view-toggle button {color:var(--bloom-muted)}
+html[data-theme] .view-toggle button.selected {background:var(--bloom-soft);color:var(--bloom-primary)}
+html[data-theme] .tabs,html[data-theme] .editor-toolbar,html[data-theme] .notes-footer {border-color:var(--bloom-border)}
+html[data-theme] .tab-item {color:var(--bloom-muted)}
+html[data-theme] .tab-item:hover,html[data-theme] .tab-item.active {color:var(--bloom-primary)}
+html[data-theme] .tab-item.active {border-bottom-color:var(--bloom-primary)}
+html[data-theme] .notes-sidepaper,
+html[data-theme] .editor-toolbar,
+html[data-theme] .notes-footer {background:var(--bloom-panel)}
+html[data-theme] .editor-tool {color:var(--bloom-muted)}
+html[data-theme] .editor-tool:hover,
+html[data-theme] .editor-tool-active {background:var(--bloom-soft);color:var(--bloom-primary)}
+html[data-theme] .tool-divider {background:var(--bloom-border)}
+html[data-theme] .prose-editor {color:var(--bloom-ink);caret-color:var(--bloom-primary)}
+html[data-theme] .prose-editor h1,html[data-theme] .prose-editor h2,
+html[data-theme] .prose-editor h3 {color:var(--bloom-heading)}
+html[data-theme] .prose-editor blockquote {background:var(--bloom-soft);border-color:var(--bloom-lavender);color:var(--bloom-ink)}
+html[data-theme] .prose-editor p.is-editor-empty:first-child::before {color:var(--bloom-muted)}
+html[data-theme] .notes-footer,html[data-theme] .prompt-list li {color:var(--bloom-muted)}
+html[data-theme] .question-number {background:var(--bloom-soft);color:var(--bloom-primary)}
+html[data-theme] .back-link {color:var(--bloom-lavender)}
+html[data-theme] .upcoming-row {border-color:var(--bloom-border);color:var(--bloom-muted)}
+html[data-theme] .empty-state {background:var(--bloom-panel);border-color:var(--bloom-border);color:var(--bloom-ink)}
+html[data-theme] .empty-state p {color:var(--bloom-muted)}
+html[data-theme] .icon-button {background:var(--bloom-soft);color:var(--bloom-primary)}
+html[data-theme] .icon-button:hover {background:var(--bloom-border)}
+html[data-theme] .pdf-display {background:var(--bloom-soft);border-color:var(--bloom-border)}
+html[data-theme] .upload-field:hover,html[data-theme] .review-row:hover {background:var(--bloom-soft)}
+html[data-theme] .graph-shell {background:var(--bloom-input);border-color:var(--bloom-border)}
+html[data-theme] .graph-legend {background:var(--bloom-panel);color:var(--bloom-ink);border-color:var(--bloom-border)}
+html[data-theme] .react-flow__controls-button {background:var(--bloom-panel)!important;fill:var(--bloom-ink)!important;border-color:var(--bloom-border)!important}
+html[data-theme] .react-flow__handle {background:var(--bloom-lavender)!important;border-color:var(--bloom-panel)!important}
+html[data-theme] .react-flow__minimap-node {fill:var(--bloom-lavender)}
+html[data-theme] .bg-mint {background:var(--bloom-soft)}
+html[data-theme] .bg-peach {background:var(--bloom-peach)}
+html[data-theme] .bg-sage-light {background:var(--bloom-mint)}
+html[data-theme] .bg-white\/75 {background:var(--bloom-soft)}
+html[data-theme] .border-rose-100 {border-color:var(--bloom-border)}
+html[data-theme] .bg-rose-50 {background:var(--bloom-soft)}
+html[data-theme] .text-red-700,html[data-theme] .text-red-600 {color:var(--bloom-rose)}
+
+/* Colourful, still gentle focal areas */
+html[data-theme="light"] .hero-banner {
+  background:linear-gradient(113deg,#fff0eb 0%,#fbe3f0 48%,#e9e3ff 77%,#def7ed 100%);
+  border-color:#ead8ed;
+}
+html[data-theme="dark"] .hero-banner {
+  background:linear-gradient(113deg,#503153 0%,#383059 49%,#29405c 100%);
+  border-color:#65517e;
+}
+html[data-theme] .hero-copy h1 {color:var(--bloom-heading)}
+html[data-theme] .hero-copy h1 em {color:var(--bloom-rose)}
+html[data-theme] .hero-copy p {color:var(--bloom-muted)}
+html[data-theme="light"] .hero-blob {background:#f5bdcc}
+html[data-theme="dark"] .hero-blob {background:#8565a4}
+html[data-theme="light"] .paper-header {
+  background:linear-gradient(110deg,#fff4f9 0%,#f2efff 65%,#e8f8f2 100%);
+  border-color:var(--bloom-border);
+}
+html[data-theme="dark"] .paper-header {
+  background:linear-gradient(110deg,#46304d 0%,#302e52 55%,#28434b 100%);
+  border-color:#5d4d75;
+}
+html[data-theme="light"] .warm-banner {background:linear-gradient(110deg,#fff0ec,#f4eaff,#e9f8ed);border-color:#e6dcf2;color:var(--bloom-ink)}
+html[data-theme="dark"] .warm-banner {background:linear-gradient(110deg,#49354c,#343452,#264747);border-color:#615179;color:var(--bloom-ink)}
+html[data-theme="light"] .soft-reminder {background:linear-gradient(135deg,#fae8ef,#f0eaff)}
+html[data-theme="dark"] .soft-reminder {background:linear-gradient(135deg,#4d344f,#3d355d)}
+html[data-theme="dark"] .graph-legend {background:#302e4be9}
+html[data-theme="dark"] .prose-editor :is(p,li,strong,em) {color:inherit}
+html[data-theme="dark"] .paper-surface :is(h1,h2,h3,.font-display) {color:var(--bloom-heading)}
+html[data-theme="dark"] .notes-sidepaper p,html[data-theme="dark"] .notes-sidepaper li {color:var(--bloom-muted)}
+html[data-theme="dark"] .paper-header .tag-chip {color:var(--bloom-primary)}
+html[data-theme="dark"] .react-flow__minimap-mask {fill:#19182e99}
+html[data-theme="dark"] .modal-backdrop {background:#0e0e22bf}
+html[data-theme] :is(button,a,input,textarea,select):focus-visible {outline:2px solid var(--bloom-lavender);outline-offset:3px}

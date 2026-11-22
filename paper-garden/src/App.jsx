@@ -248,10 +248,18 @@ function ReviewPage(){
   </div>
 }
 export default function App(){
-  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light')
+  const [theme, setTheme] = useState(() => {
+    // Respect a saved preference even if the HTML theme bootstrap is absent.
+    try {
+      const saved = window.localStorage.getItem('paper-garden-theme')
+      if (saved === 'dark' || saved === 'light') return saved
+    } catch { /* Local storage might be disabled */ }
+    if (document.documentElement.dataset.theme === 'dark') return 'dark'
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
   useEffect(() => {
     document.documentElement.dataset.theme = theme
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#1d2521' : '#f8f7f2')
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#191a2e' : '#faf8ff')
     try { window.localStorage.setItem('paper-garden-theme', theme) } catch { /* Storage can be disabled */ }
   }, [theme])
   const [addOpen,setAddOpen] = useState(false)
